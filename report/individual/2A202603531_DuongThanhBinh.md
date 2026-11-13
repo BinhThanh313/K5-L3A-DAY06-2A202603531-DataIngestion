@@ -5,7 +5,7 @@
 ### Chủ đề, nguồn/quyền, số trang và quy tắc tính trang
 - **Chủ đề:** Báo cáo cập nhật tình hình kinh tế vĩ mô Việt Nam năm 2024-2025 và chuyên đề phát triển hệ sinh thái giao thông điện, hạ tầng sạc, tác động lưới điện và khí thải nhà kính đến năm 2050.
 - **Nguồn tài liệu:** [World Bank Open Knowledge Repository (content)](https://openknowledge.worldbank.org/server/api/core/bitstreams/a7930507-99b0-42bd-9c6e-7519320ca09b/content) (`data/TAKING STOCK March 2025_VNM_FINAL.pdf`).
-- **Giấy phép:** **CC BY 3.0 IGO** (Creative Commons Attribution 3.0 IGO), xuất bản bởi Ngân hàng Tái thiết và Phát triển Quốc tế / Ngân hàng Thế giới (World Bank). Hoàn toàn được phép sử dụng công khai cho mục đích nghiên cứu và kỹ thuật dữ liệu.
+- **Giấy phép:** **CC BY 3.0 IGO** (Creative Commons Attribution 3.0 IGO theo Chính sách Truy cập Mở Open Access Policy của Ngân hàng Thế giới trên cổng Open Knowledge Repository; trang 4 của bản PDF ghi nhận bản quyền xuất bản chính thức của IBRD / World Bank). Hoàn toàn được phép sử dụng công khai cho mục đích nghiên cứu và kỹ thuật dữ liệu.
 - **Quy tắc tính trang:**
   - Tổng số trang vật lý của file PDF: **64 trang**.
   - **15 trang loại trừ hợp lệ theo GUIDE.md:**
