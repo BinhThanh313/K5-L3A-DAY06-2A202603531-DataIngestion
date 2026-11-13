@@ -1,0 +1,539 @@
+{
+  "document_id": "wb-taking-stock-2025-03",
+  "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+  "total_physical_pages": 64,
+  "valid_content_pages_count": 49,
+  "empty_or_error_pages_count": 3,
+  "excluded_non_content_pages_count": 12,
+  "total_normalized_chars": 117528,
+  "empty_or_error_pages": [
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 2,
+      "status": "empty_page",
+      "reason": "empty_page",
+      "raw_chars": 0
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 62,
+      "status": "empty_page",
+      "reason": "empty_page",
+      "raw_chars": 0
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 63,
+      "status": "empty_page",
+      "reason": "empty_page",
+      "raw_chars": 0
+    }
+  ],
+  "excluded_non_content_pages": [
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 1,
+      "status": "excluded_non_content",
+      "reason": "cover_page",
+      "raw_chars": 87,
+      "normalized_chars": 87
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 3,
+      "status": "excluded_non_content",
+      "reason": "inner_title_page",
+      "raw_chars": 87,
+      "normalized_chars": 87
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 4,
+      "status": "excluded_non_content",
+      "reason": "copyright_and_disclaimer",
+      "raw_chars": 1532,
+      "normalized_chars": 1527
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 5,
+      "status": "excluded_non_content",
+      "reason": "table_of_contents",
+      "raw_chars": 1222,
+      "normalized_chars": 1232
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 6,
+      "status": "excluded_non_content",
+      "reason": "list_of_figures",
+      "raw_chars": 2849,
+      "normalized_chars": 2758
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 7,
+      "status": "excluded_non_content",
+      "reason": "list_of_tables_and_figures",
+      "raw_chars": 2046,
+      "normalized_chars": 1895
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 8,
+      "status": "excluded_non_content",
+      "reason": "abbreviations_en",
+      "raw_chars": 1057,
+      "normalized_chars": 986
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 9,
+      "status": "excluded_non_content",
+      "reason": "abbreviations_vi",
+      "raw_chars": 939,
+      "normalized_chars": 919
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 10,
+      "status": "excluded_non_content",
+      "reason": "acknowledgments",
+      "raw_chars": 1357,
+      "normalized_chars": 1345
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 19,
+      "status": "excluded_non_content",
+      "reason": "chapter_1_divider",
+      "raw_chars": 105,
+      "normalized_chars": 100
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 42,
+      "status": "excluded_non_content",
+      "reason": "chapter_2_divider",
+      "raw_chars": 68,
+      "normalized_chars": 66
+    },
+    {
+      "document_id": "wb-taking-stock-2025-03",
+      "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+      "page": 64,
+      "status": "excluded_non_content",
+      "reason": "back_cover_contact",
+      "raw_chars": 163,
+      "normalized_chars": 162
+    }
+  ],
+  "valid_pages": [
+    {
+      "page": 11,
+      "printed_page": "i",
+      "section": "tom_luoc",
+      "sub_section": "Diễn biến kinh tế gần đây",
+      "raw_chars": 2590,
+      "normalized_chars": 2532
+    },
+    {
+      "page": 12,
+      "printed_page": "ii",
+      "section": "tom_luoc",
+      "sub_section": "Diễn biến kinh tế gần đây",
+      "raw_chars": 3261,
+      "normalized_chars": 3191
+    },
+    {
+      "page": 13,
+      "printed_page": "iii",
+      "section": "tom_luoc",
+      "sub_section": "Diễn biến kinh tế gần đây",
+      "raw_chars": 3305,
+      "normalized_chars": 3233
+    },
+    {
+      "page": 14,
+      "printed_page": "iv",
+      "section": "tom_luoc",
+      "sub_section": "Diễn biến kinh tế gần đây",
+      "raw_chars": 3107,
+      "normalized_chars": 3037
+    },
+    {
+      "page": 15,
+      "printed_page": "v",
+      "section": "tom_luoc",
+      "sub_section": "Triển vọng và hàm ý chính sách",
+      "raw_chars": 2076,
+      "normalized_chars": 2030
+    },
+    {
+      "page": 16,
+      "printed_page": "vi",
+      "section": "tom_luoc",
+      "sub_section": "Triển vọng và hàm ý chính sách",
+      "raw_chars": 2847,
+      "normalized_chars": 2762
+    },
+    {
+      "page": 17,
+      "printed_page": "vii",
+      "section": "tom_luoc",
+      "sub_section": "Chuyên đề đặc biệt: Chuyển đổi sang xe điện",
+      "raw_chars": 3078,
+      "normalized_chars": 3014
+    },
+    {
+      "page": 18,
+      "printed_page": "viii",
+      "section": "tom_luoc",
+      "sub_section": "Chuyên đề đặc biệt: Chuyển đổi sang xe điện",
+      "raw_chars": 2115,
+      "normalized_chars": 2071
+    },
+    {
+      "page": 20,
+      "printed_page": "10",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2341,
+      "normalized_chars": 2326
+    },
+    {
+      "page": 21,
+      "printed_page": "11",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2524,
+      "normalized_chars": 2510
+    },
+    {
+      "page": 22,
+      "printed_page": "12",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 1532,
+      "normalized_chars": 1506
+    },
+    {
+      "page": 23,
+      "printed_page": "13",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2607,
+      "normalized_chars": 2595
+    },
+    {
+      "page": 24,
+      "printed_page": "14",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2318,
+      "normalized_chars": 2303
+    },
+    {
+      "page": 25,
+      "printed_page": "15",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2312,
+      "normalized_chars": 2294
+    },
+    {
+      "page": 26,
+      "printed_page": "16",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2544,
+      "normalized_chars": 2528
+    },
+    {
+      "page": 27,
+      "printed_page": "17",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2043,
+      "normalized_chars": 2024
+    },
+    {
+      "page": 28,
+      "printed_page": "18",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2669,
+      "normalized_chars": 2652
+    },
+    {
+      "page": 29,
+      "printed_page": "19",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2560,
+      "normalized_chars": 2543
+    },
+    {
+      "page": 30,
+      "printed_page": "20",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2171,
+      "normalized_chars": 2156
+    },
+    {
+      "page": 31,
+      "printed_page": "21",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 1744,
+      "normalized_chars": 1729
+    },
+    {
+      "page": 32,
+      "printed_page": "22",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2619,
+      "normalized_chars": 2603
+    },
+    {
+      "page": 33,
+      "printed_page": "23",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2580,
+      "normalized_chars": 2555
+    },
+    {
+      "page": 34,
+      "printed_page": "24",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2642,
+      "normalized_chars": 2628
+    },
+    {
+      "page": 35,
+      "printed_page": "25",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 2155,
+      "normalized_chars": 2139
+    },
+    {
+      "page": 36,
+      "printed_page": "26",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 3371,
+      "normalized_chars": 3343
+    },
+    {
+      "page": 37,
+      "printed_page": "27",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.1 Diễn biến kinh tế gần đây",
+      "raw_chars": 1120,
+      "normalized_chars": 1114
+    },
+    {
+      "page": 38,
+      "printed_page": "28",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.2 Triển vọng và hàm ý chính sách",
+      "raw_chars": 1986,
+      "normalized_chars": 1975
+    },
+    {
+      "page": 39,
+      "printed_page": "29",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.2 Triển vọng và hàm ý chính sách",
+      "raw_chars": 2866,
+      "normalized_chars": 2806
+    },
+    {
+      "page": 40,
+      "printed_page": "30",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.2 Triển vọng và hàm ý chính sách",
+      "raw_chars": 3455,
+      "normalized_chars": 3420
+    },
+    {
+      "page": 41,
+      "printed_page": "31",
+      "section": "kinh_te_vi_mo",
+      "sub_section": "1.2 Triển vọng và hàm ý chính sách",
+      "raw_chars": 2223,
+      "normalized_chars": 2199
+    },
+    {
+      "page": 43,
+      "printed_page": "33",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.1 Bối cảnh",
+      "raw_chars": 2206,
+      "normalized_chars": 2191
+    },
+    {
+      "page": 44,
+      "printed_page": "34",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.1 Bối cảnh",
+      "raw_chars": 2244,
+      "normalized_chars": 2223
+    },
+    {
+      "page": 45,
+      "printed_page": "35",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.2 Chuyển đổi sang xe điện bao hàm điều gì?",
+      "raw_chars": 1921,
+      "normalized_chars": 1903
+    },
+    {
+      "page": 46,
+      "printed_page": "36",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.2 Chuyển đổi sang xe điện bao hàm điều gì?",
+      "raw_chars": 2360,
+      "normalized_chars": 2342
+    },
+    {
+      "page": 47,
+      "printed_page": "37",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.2 Chuyển đổi sang xe điện bao hàm điều gì?",
+      "raw_chars": 2690,
+      "normalized_chars": 2666
+    },
+    {
+      "page": 48,
+      "printed_page": "38",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.3 Các kịch bản về chuyển sang xe điện",
+      "raw_chars": 2882,
+      "normalized_chars": 2858
+    },
+    {
+      "page": 49,
+      "printed_page": "39",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.3 Các kịch bản về chuyển sang xe điện",
+      "raw_chars": 2261,
+      "normalized_chars": 2219
+    },
+    {
+      "page": 50,
+      "printed_page": "40",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.3 Các kịch bản về chuyển sang xe điện",
+      "raw_chars": 2061,
+      "normalized_chars": 1998
+    },
+    {
+      "page": 51,
+      "printed_page": "41",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.4 Tác động đến nhu cầu điện",
+      "raw_chars": 2721,
+      "normalized_chars": 2688
+    },
+    {
+      "page": 52,
+      "printed_page": "42",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.4 Tác động đến nhu cầu điện",
+      "raw_chars": 2651,
+      "normalized_chars": 2632
+    },
+    {
+      "page": 53,
+      "printed_page": "43",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.4 Tác động đến nhu cầu điện",
+      "raw_chars": 1782,
+      "normalized_chars": 1769
+    },
+    {
+      "page": 54,
+      "printed_page": "44",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.5 Tác động đến khí thải nhà kính",
+      "raw_chars": 2500,
+      "normalized_chars": 2486
+    },
+    {
+      "page": 55,
+      "printed_page": "45",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.5 Tác động đến khí thải nhà kính",
+      "raw_chars": 1274,
+      "normalized_chars": 1265
+    },
+    {
+      "page": 56,
+      "printed_page": "46",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.6 Tác động đến kinh tế",
+      "raw_chars": 2282,
+      "normalized_chars": 2264
+    },
+    {
+      "page": 57,
+      "printed_page": "47",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.6 Tác động đến kinh tế",
+      "raw_chars": 1856,
+      "normalized_chars": 1754
+    },
+    {
+      "page": 58,
+      "printed_page": "48",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.7 Khuyến nghị chính sách",
+      "raw_chars": 1669,
+      "normalized_chars": 1649
+    },
+    {
+      "page": 59,
+      "printed_page": "49",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.7 Khuyến nghị chính sách",
+      "raw_chars": 3501,
+      "normalized_chars": 3470
+    },
+    {
+      "page": 60,
+      "printed_page": "50",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.7 Khuyến nghị chính sách",
+      "raw_chars": 3258,
+      "normalized_chars": 3227
+    },
+    {
+      "page": 61,
+      "printed_page": "51",
+      "section": "chuyen_doi_xe_dien",
+      "sub_section": "2.7 Khuyến nghị chính sách",
+      "raw_chars": 2129,
+      "normalized_chars": 2106
+    }
+  ]
+}

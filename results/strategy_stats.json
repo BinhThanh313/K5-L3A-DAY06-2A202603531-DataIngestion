@@ -1,0 +1,115 @@
+{
+  "run_timestamp_utc": "2026-11-13T11:14:13.409187+00:00",
+  "corpus": {
+    "document_id": "wb-taking-stock-2025-03",
+    "source": "data/TAKING STOCK March 2025_VNM_FINAL.pdf",
+    "total_physical_pages": 64,
+    "valid_content_pages": 49,
+    "empty_pages": [
+      2,
+      62,
+      63
+    ],
+    "excluded_non_content_pages": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      19,
+      42,
+      64
+    ],
+    "pdf_load_seconds": 1.6894
+  },
+  "embedding_model": {
+    "provider": "openai",
+    "model_name": "text-embedding-3-small",
+    "dimensions": 1536,
+    "api_calls": 31,
+    "total_tokens": 202140,
+    "rate_per_1m_tokens_usd": 0.02,
+    "estimated_cost_usd": 0.004043
+  },
+  "vector_store": {
+    "backend": "PostgreSQL 16.16 + pgvector 0.8.7",
+    "table": "public.document_chunks",
+    "distance_metric": "cosine (<=>)",
+    "search_mode": "exact cosine similarity search",
+    "idempotent_reingestion_verified": true,
+    "count_before_reingest": 365,
+    "count_after_reingest": 365,
+    "reingest_upsert_seconds": 0.6707
+  },
+  "strategies": {
+    "A": {
+      "description": "Fixed-size chunking (size=500, overlap=50), no metadata filter at retrieval",
+      "chunking": "fixed_size",
+      "params": {
+        "size": 500,
+        "overlap": 50,
+        "use_metadata_filter": false
+      },
+      "chunk_count": 279,
+      "total_characters": 128938,
+      "min_length": 53,
+      "max_length": 500,
+      "mean_length": 462.14,
+      "median_length": 500,
+      "p90_length": 500,
+      "chunking_seconds": 0.0006,
+      "ingest_seconds": 3.6157,
+      "retrieval_seconds_20_queries": 0.6288,
+      "embedding_tokens": 65143,
+      "estimated_cost_usd": 0.001303
+    },
+    "B": {
+      "description": "Paragraph-aware chunking (max_size=500), no metadata filter at retrieval",
+      "chunking": "by_paragraph",
+      "params": {
+        "max_size": 500,
+        "use_metadata_filter": false
+      },
+      "chunk_count": 365,
+      "total_characters": 134342,
+      "min_length": 10,
+      "max_length": 500,
+      "mean_length": 368.06,
+      "median_length": 405,
+      "p90_length": 485,
+      "chunking_seconds": 0.0029,
+      "ingest_seconds": 4.4732,
+      "retrieval_seconds_20_queries": 0.6657,
+      "embedding_tokens": 67671,
+      "estimated_cost_usd": 0.001353
+    },
+    "C": {
+      "description": "Paragraph-aware chunking (max_size=500) + SQL metadata filter on section when provided",
+      "chunking": "by_paragraph",
+      "params": {
+        "max_size": 500,
+        "use_metadata_filter": true,
+        "filter_fields": [
+          "section"
+        ]
+      },
+      "chunk_count": 365,
+      "total_characters": 134342,
+      "min_length": 10,
+      "max_length": 500,
+      "mean_length": 368.06,
+      "median_length": 405,
+      "p90_length": 485,
+      "chunking_seconds": 0.0029,
+      "ingest_seconds": 4.4692,
+      "retrieval_seconds_20_queries": 0.6221,
+      "embedding_tokens": 67671,
+      "estimated_cost_usd": 0.001353
+    }
+  },
+  "query_embedding_tokens_20_questions": 1655
+}

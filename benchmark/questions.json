@@ -1,0 +1,285 @@
+{
+  "benchmark_name": "Day 06 Data Ingestion Benchmark - World Bank Taking Stock March 2025 (Vietnam)",
+  "created_before_run": true,
+  "split_policy": "Chia cố định trước khi thực nghiệm: 15 câu dev (q01-q15) và 5 câu test (q16-q20), phân tầng theo phần nội dung (Tóm lược, Chương 1, Chương 2) và loại câu hỏi (trực tiếp, diễn đạt lại, điều kiện/ngoại lệ, metadata filter). Có 6 câu kiểm tra metadata filter (4 câu dev, 2 câu test).",
+  "selection_criteria": "Ưu tiên cấu hình có Evidence Hit@3 cao nhất trên tập dev; nếu bằng nhau, xét tiếp Hit@1 trên dev, điểm trung bình Chunk Coherence (/2), khả năng tuân thủ metadata filter và chi phí/thời gian hợp lý.",
+  "leakage_risk_note": "Một số số liệu tổng hợp (như tăng trưởng GDP 7,1%, thâm dụng điện 590 kWh/1.000 US$, tạo 6,5 triệu việc làm xe điện) xuất hiện ở cả phần Tóm lược tổng quan (trang 11-18) và các chương chi tiết (Chương 1, Chương 2). Với câu hỏi không dùng filter có nhiều trang bằng chứng hợp lệ, benchmark ghi nhận đầy đủ trong alternative_gold; với câu hỏi kiểm tra filter, phạm vi section được cung cấp trước để kiểm tra khả năng khu biệt đúng phần tài liệu.",
+  "questions": [
+    {
+      "id": "q01",
+      "split": "dev",
+      "type": "truc_tiep",
+      "question": "Tăng trưởng GDP theo giá so sánh của Việt Nam trong năm 2024 đạt bao nhiêu phần trăm và đóng góp của tiêu dùng tư nhân vào tổng cầu chiếm bao nhiêu phần trăm GDP?",
+      "expected_answer": "Tăng trưởng GDP năm 2024 đạt 7,1%; tiêu dùng tư nhân chiếm 54% GDP (so với mức trung vị 61,7% của khu vực).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 11,
+      "evidence_quote": "Tăng trưởng GDP theo giá so sánh của Việt Nam đạt 7,1% trong năm 2024, nhờ xuất khẩu phục hồi mạnh, cao hơn so với hầu hết các quốc gia trong khu vực.",
+      "alternative_gold": [
+        {
+          "gold_source_id": "wb-taking-stock-2025-03",
+          "gold_page": 20,
+          "evidence_quote": "Tăng trưởng GDP theo giá so sánh của Việt Nam trong năm 2024 đạt 7,1%, nhờ xuất khẩu phục hồi mạnh, cao hơn so với các quốc gia trong khu vực."
+        }
+      ],
+      "filter": null
+    },
+    {
+      "id": "q02",
+      "split": "dev",
+      "type": "truc_tiep",
+      "question": "Trong năm 2024, khu vực dịch vụ và ngành du lịch, nhà hàng, khách sạn tăng trưởng bao nhiêu phần trăm và Việt Nam đón bao nhiêu lượt khách nước ngoài?",
+      "expected_answer": "Khu vực dịch vụ tăng trưởng 7,4% (đóng góp 45,9% vào tăng trưởng GDP); lĩnh vực du lịch, nhà hàng, khách sạn tăng trưởng 9,8% với 17,6 triệu lượt khách nước ngoài (tăng 39,5% so với năm 2023).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 21,
+      "evidence_quote": "Lĩnh vực du lịch, nhà hàng, khách sạn 4 cũng đạt kết quả tốt (tăng trưởng 9,8%) nhờ các hoạt động du lịch, đạt 17,6 triệu lượt khách nước ngoài trong năm 2024 (tăng 39,5% so với năm 2023).",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q03",
+      "split": "dev",
+      "type": "dien_dat_lai",
+      "question": "Cán cân thương mại hàng hóa của Việt Nam năm 2024 đạt mức xuất siêu bao nhiêu tỷ USD và tương đương bao nhiêu phần trăm GDP?",
+      "expected_answer": "Cán cân thương mại hàng hóa năm 2024 đạt thặng dư 24 tỷ US$ (tương đương 5,0% GDP), thấp hơn mức 28,4 tỷ US$ của năm 2023.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 22,
+      "evidence_quote": "Kết quả là cán cân thương mại của Việt Nam đạt thặng dư ở mức 24 tỷ US$ (5,0% GDP) đối với thương mại hàng hóa, tuy vẫn thấp hơn so với năm 2023 (28,4 tỷ US$).",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q04",
+      "split": "dev",
+      "type": "truc_tiep",
+      "question": "Số lượng dự án bất động sản và căn hộ được cấp phép mới trong năm 2024 là bao nhiêu và số lượng giao dịch tăng trưởng ở mức nào?",
+      "expected_answer": "Năm 2024 có 79 dự án (+18% so cùng kỳ) và 38.315 căn hộ (+52% so cùng kỳ) được cấp phép mới; số lượng giao dịch tăng 24,2% so cùng kỳ.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 27,
+      "evidence_quote": "Nguồn cung từ các dự án bất động sản được cấp phép mới và số lượng căn hộ trong năm 2024 cao hơn so với năm trước đó, đạt tổng cộng 79 dự án (+18% so cùng kỳ) và 38.315 căn hộ (+52% so cùng kỳ)",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q05",
+      "split": "dev",
+      "type": "metadata_filter",
+      "question": "Theo phân tích chi tiết tại Chương 1 về chính sách tiền tệ, Ngân hàng Nhà nước đã bán bao nhiêu tỷ USD dự trữ ngoại hối năm 2024 và thu hút thanh khoản qua OMO, tín phiếu kho bạc với quy mô bao nhiêu?",
+      "expected_answer": "NHNN đã bán 9,4 tỷ US$ dự trữ ngoại hối (làm dự trữ giảm còn khoảng 2,5 tháng nhập khẩu vào Q3/2024) và hút thanh khoản qua OMO (82,4 ngàn tỷ VND) cùng tín phiếu kho bạc (60,8 ngàn tỷ VND).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 30,
+      "evidence_quote": "NHNN can thiệp bằng cách bán dự trữ ngoại hối trị giá 9,4 tỷ US$ trong năm 2024, làm giảm dự trữ ngoại hối hiện nay xuống còn khoảng 2,5 tháng nhập khẩu vào Q3/2024",
+      "alternative_gold": [],
+      "filter": {
+        "section": "kinh_te_vi_mo"
+      }
+    },
+    {
+      "id": "q06",
+      "split": "dev",
+      "type": "dieu_kien_ngoai_le",
+      "question": "Trong năm 2024, NHNN cho phép một số ngân hàng mở rộng phạm vi cho vay ngoài chỉ tiêu trần tín dụng mà không phải xin phê duyệt trong điều kiện nào?",
+      "expected_answer": "Các ngân hàng có nền vốn vững được phép mở rộng phạm vi cho vay ngoài chỉ tiêu sau khi đã đạt 80% hạn mức vào tháng 8 theo hướng dẫn xác định trước mà không phải xin phê duyệt nâng trần tín dụng.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 32,
+      "evidence_quote": "cho phép một số ngân hàng có nền vốn vững được mở rộng phạm vi cho vay ngoài chỉ tiêu sau khi đã đạt 80% hạn mức vào tháng 8, mà không phải xin phê duyệt để nâng trần tín dụng.",
+      "alternative_gold": [
+        {
+          "gold_source_id": "wb-taking-stock-2025-03",
+          "gold_page": 14,
+          "evidence_quote": "cho phép một số ngân hàng có vốn vững được mở rộng phạm vi cho vay ngoài mức trần theo hướng dẫn được xác định trước đó sau khi đã đạt 80% hạn mức vào tháng 8 mà không phải xin phê duyệt để nâng trần tín dụng."
+        }
+      ],
+      "filter": null
+    },
+    {
+      "id": "q07",
+      "split": "dev",
+      "type": "dien_dat_lai",
+      "question": "Quy mô phát hành trái phiếu doanh nghiệp năm 2024 phục hồi đạt bao nhiêu ngàn tỷ VND và giá trị trái phiếu sắp đáo hạn trong năm 2025 là bao nhiêu?",
+      "expected_answer": "Tổng khối lượng phát hành năm 2024 đạt 443 ngàn tỷ VND (17,6 tỷ US$, tăng 37%), trong đó ngân hàng chiếm 69%; giá trị trái phiếu đáo hạn năm 2025 là 217 ngàn tỷ VND (8,6 tỷ US$).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 33,
+      "evidence_quote": "Tổng khối lượng phát hành đạt 443 ngàn tỷ VND (17,6 tỷ US$) trong năm 2024, tương đương tăng 37% (so cùng kỳ).",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q08",
+      "split": "dev",
+      "type": "metadata_filter",
+      "question": "Trong Chương 1, đợt cải cách tiền lương từ ngày 01/07/2024 tăng lương cơ bản và lương hưu ở mức nào và tổng khối lượng phát hành trái phiếu Chính phủ đạt bao nhiêu ngàn tỷ VND?",
+      "expected_answer": "Từ 01/07/2024, lương cơ bản và lương hưu tăng bình quân lần lượt 30% và 15%; tổng khối lượng phát hành trái phiếu Chính phủ đạt 330,4 ngàn tỷ VND (13,2 tỷ US$, đạt 82,6% kế hoạch năm).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 34,
+      "evidence_quote": "Tổng khối lượng phát hành trái phiếu đạt 330,4 ngàn tỷ VND (13,2 tỷ US$), tương đương 82,6% kế hoạch năm, cao hơn so với 298,5 ngàn tỷ VND trong kế hoạch năm 2023.",
+      "alternative_gold": [],
+      "filter": {
+        "section": "kinh_te_vi_mo"
+      }
+    },
+    {
+      "id": "q09",
+      "split": "dev",
+      "type": "dien_dat_lai",
+      "question": "Sản lượng điện tái tạo năm 2024 của Việt Nam ước đạt bao nhiêu tỷ kWh và những nguyên nhân nào làm chậm quá trình triển khai năng lượng tái tạo?",
+      "expected_answer": "Sản lượng điện tái tạo năm 2024 ước đạt 128,4 tỷ kWh (bao gồm cả thủy điện, tăng khoảng 8%). Nguyên nhân chậm do thiếu cơ chế định giá và đấu thầu, chậm phê duyệt Quy hoạch Điện 8 và triển khai đầu tư liên quan.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 36,
+      "evidence_quote": "nhưng sản lượng điện tái tạo mới chỉ ước đạt 128,4 tỷ kWh trong năm 2024 (bao gồm cả thủy điện), đạt tăng trưởng khoảng 8% so cùng kỳ",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q10",
+      "split": "dev",
+      "type": "truc_tiep",
+      "question": "Theo dự báo ngân sách giai đoạn 2025-2026, mức bội chi ngân sách dự kiến chiếm bao nhiêu phần trăm GDP và chi ngân sách năm 2025 dự kiến tăng thêm bao nhiêu phần trăm?",
+      "expected_answer": "Bội chi ngân sách dự kiến ở mức 1,4% GDP năm 2025 và giảm còn 1,0% GDP năm 2026; chi ngân sách năm 2025 dự kiến tăng thêm 20% so với năm 2024.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 39,
+      "evidence_quote": "Bội chi ngân sách dự kiến lên đến 1,4% GDP trong năm 2025 và sau đó giảm còn 1,0% trong năm 2026 khi Chính phủ có kế hoạch tiếp tục giảm dư nợ trong điều kiện tăng trưởng vẫn cao hơn lãi suất.",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q11",
+      "split": "dev",
+      "type": "metadata_filter",
+      "question": "Theo phân tích tại Chương 2 về bối cảnh giao thông vận tải, lĩnh vực giao thông vận tải xả ra bao nhiêu triệu tấn khí thải năm 2021 và nếu không khử các-bon thì sẽ tăng lên mức nào vào năm 2050 theo kịch bản BAU?",
+      "expected_answer": "Năm 2021 giao thông vận tải xả ra 32,9 MtCO2eq (7,2% tổng khí thải nhà kính toàn nền kinh tế); nếu không khử các-bon sẽ tăng lên 334 MtCO2eq vào năm 2050 theo kịch bản BAU.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 43,
+      "evidence_quote": "Nếu lĩnh vực này không được khử các-bon, khí thải từ giao thông dự kiến sẽ tăng mạnh, lên đến 334 MtCO2eq vào năm 2050 theo Kịch bản phát triển thông thường (BAU).",
+      "alternative_gold": [],
+      "filter": {
+        "section": "chuyen_doi_xe_dien"
+      }
+    },
+    {
+      "id": "q12",
+      "split": "dev",
+      "type": "dieu_kien_ngoai_le",
+      "question": "Theo Quyết định số 876/QĐ-TTg, Hà Nội và thành phố Hồ Chí Minh cần bổ sung thêm bao nhiêu xe buýt vào năm 2030 để đạt chỉ tiêu và đâu là những rào cản chính?",
+      "expected_answer": "Hà Nội và TP.HCM cần bổ sung lần lượt 6.000 và 4.500 xe buýt vào năm 2030. Rào cản gồm chi phí mua xe buýt điện ban đầu cao hơn xe diesel/khí tự nhiên, thiếu hướng dẫn kỹ thuật và vận hành, cùng rủi ro tỷ lệ sử dụng thấp.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 47,
+      "evidence_quote": "Hà Nội và thành phố Hồ Chí Minh cần bổ sung thêm lần lượt 6.000 và 4.500 nghìn xe buýt vào năm 2030, mới có thể hoàn thành được chỉ tiêu về tỷ lệ sử dụng phương thức này theo Quyết định số 876 tại hai thành phố.",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q13",
+      "split": "dev",
+      "type": "dien_dat_lai",
+      "question": "Ba kịch bản chuyển đổi sang xe điện (BAU, SPS và ADS) khác nhau ở những tham số chính nào và thời điểm kích hoạt đòn bẩy chính sách giữa ADS và SPS chênh nhau ra sao?",
+      "expected_answer": "Khác nhau theo 3 tham số: (i) mức độ chuyển sang dùng xe điện, (ii) mức độ sản xuất và cung ứng xe điện, và (iii) mức độ sẵn có về hạ tầng sạc. Kịch bản ADS kích hoạt đòn bẩy chính sách từ năm 2025, sớm hơn so với mốc năm 2030 trong kịch bản SPS.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 48,
+      "evidence_quote": "Về khung thời gian, kịch bản ADS dựa trên những đòn bẩy chính sách được kích hoạt từ năm 2025, so với 2030 trong SPS .",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q14",
+      "split": "dev",
+      "type": "dieu_kien_ngoai_le",
+      "question": "Tại sao trong kịch bản BAU, xe điện hai bánh ở đô thị bị giới hạn ở mức 40% và chưa thể gia nhập đáng kể vào thị trường nông thôn?",
+      "expected_answer": "Ở đô thị bị giới hạn ở mức 40% do chênh lệch giá so với xe động cơ đốt trong và quan ngại về độ an toàn của pin điện; ở nông thôn chưa gia nhập đáng kể vì chưa có hạ tầng sạc công cộng và chủ yếu dùng xe điện chạy pin chì có quãng đường, công suất hạn chế.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 50,
+      "evidence_quote": "Theo kịch bản BAU, tỷ lệ chuyển sang sử dụng xe điện hai bánh sẽ tập trung ở các địa bàn đô thị, nhưng bị giới hạn ở mức 40% do vẫn còn chênh lệch giá so với xe hai bánh dùng động cơ đốt trong và do quan ngại về độ an toàn của pin điện.",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q15",
+      "split": "dev",
+      "type": "metadata_filter",
+      "question": "Trong phần Tóm lược tổng quan, tổng nhu cầu thị trường về xe điện các loại giai đoạn 2024-2030 và 2031-2050 cùng số lượng việc làm mới tạo ra cộng dồn đến năm 2050 được tóm tắt như thế nào?",
+      "expected_answer": "Nhu cầu thị trường xe điện các loại đạt trên 7 triệu xe giai đoạn 2024-2030 và 71 triệu xe giai đoạn 2031-2050; dự kiến tạo thêm đến 6,5 triệu việc làm mới cộng dồn đến năm 2050 (61% ở lĩnh vực hạ tầng sạc).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 17,
+      "evidence_quote": "Cộng dồn lại, số liệu trên cho thấy nhu cầu thị trường về xe điện các loại lên đến trên 7 triệu xe trong giai đoạn 2024-2030, và 71 triệu xe trong giai đoạn 2031-2050.",
+      "alternative_gold": [
+        {
+          "gold_source_id": "wb-taking-stock-2025-03",
+          "gold_page": 18,
+          "evidence_quote": "dự kiến sẽ tạo thêm đến 6,5 triệu việc làm mới trong toàn bộ chuỗi giá trị xe điện, tính cộng dồn đến năm 2050, trong đó có 61% ở lĩnh vực hạ tầng sạc xe điện."
+        }
+      ],
+      "filter": {
+        "section": "tom_luoc"
+      }
+    },
+    {
+      "id": "q16",
+      "split": "test",
+      "type": "metadata_filter",
+      "question": "Theo phân tích tại Chương 1 về tỷ lệ thâm dụng điện, cường độ tiêu thụ điện trên mỗi 1.000 USD GDP năm 2024 tăng lên bao nhiêu kWh (cao nhất từ năm nào) và các ngành kim loại cơ bản, kim loại màu, cao su - nhựa tăng trưởng bao nhiêu phần trăm?",
+      "expected_answer": "Tỷ lệ thâm dụng điện năm 2024 tăng lên 590 kWh trên 1.000 US$ (từ 579 kWh năm 2023, cao nhất kể từ năm 2013 theo Chương 1); kim loại cơ bản, kim loại màu, cao su và nhựa tăng trưởng lần lượt 9,3%, 16,3% và 23,4%.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 35,
+      "evidence_quote": "Nhưng trong năm 2024, doanh số bán điện tăng cao hơn tốc độ tăng trưởng kinh tế, làm tăng tỷ lệ thâm dụng điện so GDP lên đến 590 kWh trên 1.000 US$ so với mức 579 kWh trên 1.000 US$ năm 2023, là tỷ lệ cao nhất kể từ năm 2013.",
+      "alternative_gold": [
+        {
+          "gold_source_id": "wb-taking-stock-2025-03",
+          "gold_page": 36,
+          "evidence_quote": "Các lĩnh vực thâm dụng năng lượng và tiêu thụ điện năng lớn như sản xuất kim loại cơ bản (bao gồm thép), quặng kim loại màu (bao gồm nhôm), cao su và nhựa tăng trưởng lần lượt ở mức 9,3%, 16,3% và 23,4% trong năm 2024"
+        }
+      ],
+      "filter": {
+        "section": "kinh_te_vi_mo"
+      }
+    },
+    {
+      "id": "q17",
+      "split": "test",
+      "type": "truc_tiep",
+      "question": "Để đáp ứng mục tiêu chuyển đổi xe điện, Việt Nam cần đầu tư bao nhiêu tỷ USD cho ngành điện trong giai đoạn 2024-2030 và cộng dồn bao nhiêu tỷ USD trong giai đoạn 2031-2050 theo kịch bản ADS?",
+      "expected_answer": "Giai đoạn 2024-2030 cần đầu tư 6-9 tỷ US$ cho ngành điện; giai đoạn 2031-2050 theo kịch bản ADS cần đầu tư cộng dồn 280 tỷ US$ (trong đó riêng đầu tư phát sinh về công suất lưới điện lên đến 9 tỷ US$).",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 52,
+      "evidence_quote": "Để tạo điều kiện chuyển sang xe điện theo mục tiêu, trong giai đoạn 2024-2030, Việt Nam cần đầu tư 6-9 tỷ US$ cho ngành điện.",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q18",
+      "split": "test",
+      "type": "dieu_kien_ngoai_le",
+      "question": "Nếu cơ cấu nguồn điện lưới giữ nguyên ở mức năm 2022 so với trường hợp hoàn thành xanh hóa lưới điện theo QHĐ8, mức giảm phát thải ròng vào năm 2050 nhờ chuyển sang xe điện sẽ thay đổi như thế nào?",
+      "expected_answer": "Nếu cơ cấu nguồn điện lưới giữ như năm 2022, chuyển sang xe điện vẫn giúp giảm phát thải ròng 2,2 triệu tấn CO2eq vào năm 2050; nếu hoàn thành xanh hóa lưới điện theo QHĐ8, mức giảm phát thải ròng đạt 5,3 triệu tấn CO2eq vào năm 2050.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 55,
+      "evidence_quote": "cấu nguồn điện lưới vẫn không thay đổi so với mức năm 2022, riêng chuyển đổi sang xe điện có thể đem lại lượng giảm phát thải ròng ở mức 2,2 triệu tấn CO2eq vào năm 2050 do xe điện có hiệu suất năng lượng cao hơn. Ngoài ra, nếu có thể hoàn thành xanh hóa lưới điện theo QHĐ8, chuyển đổi có thể dẫn đến giảm khí thải ròng ở mức 5,3 triệu tấn CO2eq vào năm 2050 (Hình 2.6).",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q19",
+      "split": "test",
+      "type": "dien_dat_lai",
+      "question": "Với giả định giá dầu thô quốc tế ở mức 80 USD/thùng, việc chuyển đổi sang xe điện đến năm 2050 giúp Việt Nam tiết kiệm cộng dồn bao nhiêu chi phí nhiên liệu theo kịch bản SPS và ADS?",
+      "expected_answer": "Với giá dầu thô 80 US$/thùng, chi tiêu cộng dồn tiết kiệm được đến năm 2050 là 360 tỷ US$ theo kịch bản SPS và 498 tỷ US$ theo kịch bản ADS.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 56,
+      "evidence_quote": "Với giá dầu thô quốc tế quốc tế hiện nay ở mức 80 US$/thùng, con số chi tiêu cộng dồn tiết kiệm được sẽ là 360 tỷ US4 theo kịch bản SPS và 498 tỷ US$ theo kịch bản ADS, qua đó sẽ nâng cao khả năng chống chịu về kinh tế (Hình 2.7).",
+      "alternative_gold": [],
+      "filter": null
+    },
+    {
+      "id": "q20",
+      "split": "test",
+      "type": "metadata_filter",
+      "question": "Theo khuyến nghị chính sách chi tiết ở Chương 2, lộ trình phát triển mạng lưới sạc công cộng giai đoạn 2025-2027 ưu tiên tại 5 thành phố nào và vì sao Chính phủ cần hỗ trợ tài chính cho hạ tầng sạc?",
+      "expected_answer": "Giai đoạn 2025-2027 ưu tiên tại 5 thành phố loại đặc biệt (Hà Nội, Hải Phòng, Đà Nẵng, TP. Hồ Chí Minh và Cần Thơ); kinh nghiệm quốc tế cho thấy trợ giá của Chính phủ cho hạ tầng sạc có thể hiệu quả gấp 6 lần so với trợ giá mua xe điện.",
+      "gold_source_id": "wb-taking-stock-2025-03",
+      "gold_page": 60,
+      "evidence_quote": "Trong giai đoạn 2025-2027, các mạng lưới sạc công cộng nên được ưu tiên tại năm thành phố loại đặc biệt (Hà Nội, Hải Phòng, Đà Nẵng, thành phố Hồ Chí Minh và Cần Thơ).",
+      "alternative_gold": [],
+      "filter": {
+        "section": "chuyen_doi_xe_dien"
+      }
+    }
+  ]
+}

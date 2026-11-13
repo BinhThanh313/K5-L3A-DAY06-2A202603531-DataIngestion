@@ -1,0 +1,111 @@
+{
+  "audit_type": "Manual Grounding Quality Audit on 5 test questions (Thang điểm 0-2)",
+  "definition": "Đánh giá độ đủ của bằng chứng truy xuất trong top-3 để hỗ trợ câu trả lời (0: không có bằng chứng, 1: có bằng chứng nhưng thiếu điều kiện/ngữ cảnh, 2: đầy đủ để trả lời và trích dẫn nguồn).",
+  "summary": {
+    "A": {
+      "sample_count": 5,
+      "score_0_count": 0,
+      "score_1_count": 2,
+      "score_2_count": 3,
+      "total_points": 8,
+      "mean_score_out_of_2": 1.6,
+      "items": [
+        {
+          "question_id": "q16",
+          "grounding_score": 2,
+          "reason": "Top-3 gồm p35 (590 kWh/1.000 US$, kỷ lục từ 2013) và p36 (kim loại cơ bản 9,3%, kim loại màu 16,3%, cao su nhựa 23,4%). Đầy đủ số liệu và bối cảnh để trả lời hoàn chỉnh."
+        },
+        {
+          "question_id": "q17",
+          "grounding_score": 1,
+          "reason": "Top-1 nằm tại p52 có chứa con số đầu tư 6-9 tỷ USD và 280 tỷ USD theo ADS, nhưng do cắt fixed-size nên câu đầu bị cụt chữ, làm người đọc phải suy diễn chủ thể ban đầu."
+        },
+        {
+          "question_id": "q18",
+          "grounding_score": 1,
+          "reason": "Top-1 nằm tại p55 chứa câu thứ hai (5,3 triệu tấn CO2eq theo QHĐ8) nhưng vế so sánh cơ cấu điện 2022 (2,2 triệu tấn) bị cắt vắt sang chunk khác, thiếu một nửa điều kiện."
+        },
+        {
+          "question_id": "q19",
+          "grounding_score": 2,
+          "reason": "Top-1 tại p56 chứa nguyên văn câu kết luận với giá dầu 80 USD/thùng thì tiết kiệm 360 tỷ USD (SPS) và 498 tỷ USD (ADS). Đủ bằng chứng hoàn toàn."
+        },
+        {
+          "question_id": "q20",
+          "grounding_score": 2,
+          "reason": "Top-1 tại p60 chứa đầy đủ tên 5 thành phố ưu tiên sạc (Hà Nội, Hải Phòng, Đà Nẵng, TP.HCM, Cần Thơ) và Top-3 có ngữ cảnh giải thích trợ giá hiệu quả gấp 6 lần."
+        }
+      ]
+    },
+    "B": {
+      "sample_count": 5,
+      "score_0_count": 0,
+      "score_1_count": 0,
+      "score_2_count": 5,
+      "total_points": 10,
+      "mean_score_out_of_2": 2.0,
+      "items": [
+        {
+          "question_id": "q16",
+          "grounding_score": 2,
+          "reason": "Top-1 và Top-2 tại p35 giải thích rõ tỷ lệ thâm dụng điện 590 kWh/1.000 US$ và năm kỷ lục 2013; Top-3 tại p36 trích trọn vẹn số liệu tăng trưởng 3 ngành công nghiệp. Đủ 100% bằng chứng."
+        },
+        {
+          "question_id": "q17",
+          "grounding_score": 2,
+          "reason": "Top-2 tại p52 trích trọn vẹn đoạn văn: giai đoạn 2024-2030 cần 6-9 tỷ USD, giai đoạn 2031-2050 cần 280 tỷ USD (trong đó 9 tỷ USD công suất lưới điện). Đầy đủ để trả lời."
+        },
+        {
+          "question_id": "q18",
+          "grounding_score": 2,
+          "reason": "Top-2 tại p55 trích trọn vẹn cả hai trường hợp: giảm phát thải ròng 2,2 triệu tấn CO2eq (lưới 2022) và 5,3 triệu tấn CO2eq (xanh hóa QHĐ8). Đầy đủ điều kiện và số liệu."
+        },
+        {
+          "question_id": "q19",
+          "grounding_score": 2,
+          "reason": "Top-1 tại p56 trích nguyên vẹn đoạn văn với đầy đủ giả định giá dầu 80 USD/thùng và con số tiết kiệm cho cả 2 kịch bản SPS, ADS."
+        },
+        {
+          "question_id": "q20",
+          "grounding_score": 2,
+          "reason": "Top-1 và Top-2 tại p60 trích trọn vẹn danh sách 5 thành phố loại đặc biệt giai đoạn 2025-2027 và lý do chính sách trợ giá hạ tầng sạc hiệu quả gấp 6 lần."
+        }
+      ]
+    },
+    "C": {
+      "sample_count": 5,
+      "score_0_count": 0,
+      "score_1_count": 0,
+      "score_2_count": 5,
+      "total_points": 10,
+      "mean_score_out_of_2": 2.0,
+      "items": [
+        {
+          "question_id": "q16",
+          "grounding_score": 2,
+          "reason": "Nhờ filter section=kinh_te_vi_mo, toàn bộ top-3 đều thuộc trang 35 và 36, chứa đầy đủ bằng chứng, số liệu tăng trưởng và điều kiện ngữ cảnh so sánh."
+        },
+        {
+          "question_id": "q17",
+          "grounding_score": 2,
+          "reason": "Tương tự Chiến lược B, Top-2 chứa đầy đủ trọn vẹn số liệu và ngữ cảnh kịch bản ADS cho cả hai giai đoạn."
+        },
+        {
+          "question_id": "q18",
+          "grounding_score": 2,
+          "reason": "Top-2 tại p55 giữ trọn vẹn đoạn văn so sánh 2 điều kiện nguồn điện, đủ 100% bằng chứng để trả lời và truy nguồn."
+        },
+        {
+          "question_id": "q19",
+          "grounding_score": 2,
+          "reason": "Top-1 tại p56 trích trọn vẹn đoạn văn, đủ bằng chứng trả lời chính xác và truy vết nguồn."
+        },
+        {
+          "question_id": "q20",
+          "grounding_score": 2,
+          "reason": "Nhờ filter section=chuyen_doi_xe_dien, top-3 tập trung vào khuyến nghị chính sách p60 và p61, giữ trọn vẹn cả 5 thành phố và luận cứ hiệu quả trợ giá."
+        }
+      ]
+    }
+  }
+}

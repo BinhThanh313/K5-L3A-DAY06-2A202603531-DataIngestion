@@ -1,4 +1,105 @@
-# Day 06 · Data Ingestion Engineering
+# Day 06 · Data Ingestion Engineering — Báo cáo Thực nghiệm
+
+## 1. Tóm tắt dự án & Kết quả thực nghiệm
+
+Dự án hiện thực trọn vẹn pipeline nạp dữ liệu (Data Ingestion Pipeline) từ tài liệu báo cáo kinh tế của World Bank sang cơ sở dữ liệu vector (PostgreSQL 16 + pgvector), đánh giá và so sánh thực nghiệm **3 chiến lược chuẩn bị dữ liệu (A / B / C)** trên bộ benchmark chuẩn gồm **20 câu hỏi (15 dev / 5 test)**.
+
+### Bảng kết quả benchmark tổng hợp:
+
+| Chiến lược | Cơ chế Chunking & Filter | Dev Hit@1 | Dev Hit@3 | Test Hit@1 | Test Hit@3 | All Hit@3 | Coherence (TB/2) | Grounding (TB/2) | Filter đúng | Chi phí |
+|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Strategy A** (Baseline) | Fixed-size 500 ký tự, overlap 50, không filter | 53.33% (8/15) | 73.33% (11/15) | 60.00% (3/5) | 60.00% (3/5) | 70.00% (14/20) | 0.90 / 2.0 | 1.60 / 2.0 | N/A | $0.00130 |
+| **Strategy B** | Structure-aware Paragraph 500 ký tự, không filter | 66.67% (10/15) | 80.00% (12/15) | 60.00% (3/5) | **100.0%** (5/5) | 85.00% (17/20) | **1.70 / 2.0** | **2.00 / 2.0** | N/A | $0.00135 |
+| **Strategy C** (Tối ưu) | Paragraph 500 ký tự + **SQL Filter trên `section`** | **66.67%** (10/15) | **86.67%** (13/15) | **60.00%** (3/5) | **100.0%** (5/5) | **90.00%** (18/20) | **1.70 / 2.0** | **2.00 / 2.0** | **100%** (15/15) | $0.00135 |
+
+- **Embedding Model:** OpenAI `text-embedding-3-small` (1536 chiều, cosine distance `<=>`).
+- **Vector Store:** PostgreSQL 16.16 kết hợp extension `pgvector 0.8.7` chạy Docker local.
+- **Tổng chi phí toàn bộ pipeline:** **$0.00404 USD** (~100 VNĐ cho toàn bộ 20 câu hỏi và 365 chunks).
+- **Tính bất biến & Idempotency:** Hỗ trợ `ON CONFLICT (strategy, chunk_id) DO UPDATE`, nạp lại không bị duplicate bản ghi.
+
+---
+
+## 2. Hướng dẫn cài đặt & Chạy tái lập (Quickstart & Reproduction)
+
+### Bước 1: Khởi động cơ sở dữ liệu PostgreSQL + pgvector
+Đảm bảo đã cài đặt Docker Desktop và khởi động container:
+```bash
+cd starter
+docker compose -p day6_student_starter up -d --wait
+```
+Kiểm tra kết nối và extension:
+```bash
+python scripts/check_setup.py
+```
+*(Kỳ vọng: Hiện thông tin database PostgreSQL 16, pgvector 0.8.7 và thông báo `Setup OK`).*
+
+### Bước 2: Cài đặt thư viện Python
+Sử dụng môi trường ảo Python 3.11+:
+```bash
+pip install -r starter/requirements.txt
+```
+
+### Bước 3: Cấu hình biến môi trường
+Tạo file `starter/.env` (từ mẫu `starter/.env.example`) và điền API key:
+```env
+DATABASE_URL=postgresql://student:student_password_day6@127.0.0.1:55433/rag_ingestion
+OPENAI_API_KEY=sk-...your-openai-api-key...
+```
+
+### Bước 4: Chạy toàn bộ pipeline & benchmark
+Đứng từ thư mục gốc của repository, chạy lệnh:
+```bash
+python -m starter.src.run
+```
+Lệnh trên sẽ tự động:
+1. Đọc và chuẩn hóa 49 trang nội dung hợp lệ từ `data/TAKING STOCK March 2025_VNM_FINAL.pdf`.
+2. Tạo chunks và vector embedding cho 3 chiến lược A, B, C và lưu vào PostgreSQL.
+3. Chạy đánh giá 20 câu benchmark (15 dev / 5 test).
+4. Xuất toàn bộ thống kê, log và traces vào thư mục `results/`.
+
+---
+
+## 3. Cấu trúc thư mục nộp bài
+
+```text
+.
+├── STUDENT.md                              # Thông tin học viên
+├── README.md                               # Hướng dẫn chạy, kết quả và đề bài
+├── data/
+│   ├── TAKING STOCK March 2025_VNM_FINAL.pdf  # Tài liệu gốc World Bank (CC BY 3.0 IGO)
+│   ├── manifest.json                       # Chi tiết nguồn, giấy phép, quy tắc lọc trang
+│   └── format-example.json                 # Định dạng mẫu
+├── benchmark/
+│   └── questions.json                      # 20 câu hỏi (15 dev / 5 test) kèm gold evidence
+├── artifacts/
+│   └── experiment_log.csv                  # Nhật ký giả thuyết và chỉ số 3 chiến lược
+├── results/                                # Toàn bộ artifacts và traces thực nghiệm
+│   ├── metrics_summary.json                # Bảng số liệu Hit@1, Hit@3 chi tiết
+│   ├── strategy_stats.json                 # Thống kê chunk count, ký tự, thời gian, chi phí
+│   ├── ingestion_log.json                  # Log lọc 49 trang hợp lệ, 15 trang loại trừ
+│   ├── manual_coherence_audit.json         # Đánh giá tính mạch lạc thủ công 10 vị trí
+│   ├── manual_metadata_audit.json          # Đánh giá metadata & kiểm tra filter tuân thủ
+│   ├── manual_grounding_audit.json         # Đánh giá chất lượng grounding 5 câu test
+│   └── all_traces.json                     # Traces truy xuất top-3 cho toàn bộ câu hỏi
+├── report/individual/
+│   ├── 2A202603531_HoTen.md                # Báo cáo phân tích chuyên sâu của học viên
+│   └── MSSV_HoTen.md                       # File mẫu trắng ban đầu của ban tổ chức
+└── starter/                                # Khung mã nguồn pipeline
+    ├── docker-compose.yml                  # Cấu hình container pgvector local
+    ├── requirements.txt                    # Danh sách thư viện phụ thuộc
+    ├── scripts/check_setup.py              # Script kiểm tra môi trường
+    └── src/                                # Mã nguồn pipeline hoàn thiện
+        ├── ingestion.py                    # Đọc PDF, chuẩn hóa văn bản, lọc trang
+        ├── chunking.py                     # Thuật toán chunking Fixed-size & Paragraph
+        ├── embeddings.py                   # Module vector hóa với OpenAI API
+        ├── store.py                        # Kho lưu trữ PostgreSQL + pgvector
+        ├── evaluation.py                   # Đánh giá Hit@1, Hit@3, lọc metadata
+        └── run.py                          # Pipeline điều phối thực nghiệm tự động
+```
+
+---
+
+# [Tham chiếu] Đề bài gốc — Day 06 · Data Ingestion Engineering
 
 **Lab cá nhân** · **4 giờ** · **Dữ liệu tự chọn**
 
