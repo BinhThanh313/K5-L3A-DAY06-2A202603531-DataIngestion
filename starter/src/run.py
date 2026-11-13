@@ -313,7 +313,7 @@ def main() -> None:
             f"Hit@3: {t['evidence_hit_at_3_fraction']} ({t['evidence_hit_at_3_pct']}%) | "
             f"ALL Hit@3: {a['evidence_hit_at_3_fraction']} ({a['evidence_hit_at_3_pct']}%)"
         )
-    print(f"\nAll traces and metrics saved to {root_results} and {starter_results}.")
+    print(f"\nAll traces and metrics saved to {root_results}.")
 
 
 if __name__ == "__main__":

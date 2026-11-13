@@ -1,0 +1,208 @@
+{
+  "strategy": "D_hybrid",
+  "description": "Hybrid Retrieval combining Dense Cosine (text-embedding-3-small) with BM25 Okapi via RRF",
+  "best_config": {
+    "k": 60,
+    "dense_w": 1.4,
+    "bm25_w": 0.8,
+    "name": "RRF-k60-dense-boosted",
+    "dev_hit1": 73.33,
+    "dev_hit3": 100.0
+  },
+  "dev_tuning": [
+    {
+      "config": {
+        "k": 20,
+        "dense_w": 1.0,
+        "bm25_w": 1.0,
+        "name": "RRF-k20-balanced"
+      },
+      "dev_hit1": 66.67,
+      "dev_hit3": 100.0,
+      "dev_hit3_fraction": "15/15"
+    },
+    {
+      "config": {
+        "k": 60,
+        "dense_w": 1.0,
+        "bm25_w": 1.0,
+        "name": "RRF-k60-standard"
+      },
+      "dev_hit1": 66.67,
+      "dev_hit3": 100.0,
+      "dev_hit3_fraction": "15/15"
+    },
+    {
+      "config": {
+        "k": 100,
+        "dense_w": 1.0,
+        "bm25_w": 1.0,
+        "name": "RRF-k100-soft"
+      },
+      "dev_hit1": 66.67,
+      "dev_hit3": 100.0,
+      "dev_hit3_fraction": "15/15"
+    },
+    {
+      "config": {
+        "k": 60,
+        "dense_w": 1.4,
+        "bm25_w": 0.8,
+        "name": "RRF-k60-dense-boosted"
+      },
+      "dev_hit1": 73.33,
+      "dev_hit3": 100.0,
+      "dev_hit3_fraction": "15/15"
+    }
+  ],
+  "execution_time_sec": 0.4244,
+  "metrics": {
+    "dev": {
+      "count": 15,
+      "hit_at_1_count": 11,
+      "hit_at_1_fraction": "11/15",
+      "hit_at_1_pct": 73.33,
+      "evidence_hit_at_3_count": 15,
+      "evidence_hit_at_3_fraction": "15/15",
+      "evidence_hit_at_3_pct": 100.0,
+      "page_hit_at_3_count": 15,
+      "page_hit_at_3_fraction": "15/15",
+      "page_hit_at_3_pct": 100.0,
+      "multi_chunk_hit_at_3_count": 15,
+      "multi_chunk_hit_at_3_fraction": "15/15",
+      "filter_questions_count": 4,
+      "filter_compliant_count": 4,
+      "filter_compliance_fraction": "4/4",
+      "filter_compliance_pct": 100.0
+    },
+    "test": {
+      "count": 5,
+      "hit_at_1_count": 4,
+      "hit_at_1_fraction": "4/5",
+      "hit_at_1_pct": 80.0,
+      "evidence_hit_at_3_count": 5,
+      "evidence_hit_at_3_fraction": "5/5",
+      "evidence_hit_at_3_pct": 100.0,
+      "page_hit_at_3_count": 5,
+      "page_hit_at_3_fraction": "5/5",
+      "page_hit_at_3_pct": 100.0,
+      "multi_chunk_hit_at_3_count": 5,
+      "multi_chunk_hit_at_3_fraction": "5/5",
+      "filter_questions_count": 2,
+      "filter_compliant_count": 2,
+      "filter_compliance_fraction": "2/2",
+      "filter_compliance_pct": 100.0
+    },
+    "all": {
+      "count": 20,
+      "hit_at_1_count": 15,
+      "hit_at_1_fraction": "15/20",
+      "hit_at_1_pct": 75.0,
+      "evidence_hit_at_3_count": 20,
+      "evidence_hit_at_3_fraction": "20/20",
+      "evidence_hit_at_3_pct": 100.0,
+      "page_hit_at_3_count": 20,
+      "page_hit_at_3_fraction": "20/20",
+      "page_hit_at_3_pct": 100.0,
+      "multi_chunk_hit_at_3_count": 20,
+      "multi_chunk_hit_at_3_fraction": "20/20",
+      "filter_questions_count": 6,
+      "filter_compliant_count": 6,
+      "filter_compliance_fraction": "6/6",
+      "filter_compliance_pct": 100.0
+    }
+  },
+  "comparison_with_strategy_C": {
+    "improved_count": 5,
+    "improved_details": [
+      {
+        "question_id": "q05",
+        "split": "dev",
+        "question": "Theo phân tích chi tiết tại Chương 1 về chính sách tiền tệ, Ngân hàng Nhà nước đã bán bao nhiêu tỷ USD dự trữ ngoại hối năm 2024 và thu hút thanh khoản qua OMO, tín phiếu kho bạc với quy mô bao nhiêu?",
+        "strategy_C": {
+          "hit_at_1": false,
+          "hit_at_3": true
+        },
+        "strategy_D_hybrid": {
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        "reason": "BM25 keyword match promoted gold chunk to top rank"
+      },
+      {
+        "question_id": "q08",
+        "split": "dev",
+        "question": "Trong Chương 1, đợt cải cách tiền lương từ ngày 01/07/2024 tăng lương cơ bản và lương hưu ở mức nào và tổng khối lượng phát hành trái phiếu Chính phủ đạt bao nhiêu ngàn tỷ VND?",
+        "strategy_C": {
+          "hit_at_1": false,
+          "hit_at_3": false
+        },
+        "strategy_D_hybrid": {
+          "hit_at_1": false,
+          "hit_at_3": true
+        },
+        "reason": "BM25 keyword match promoted gold chunk to top rank"
+      },
+      {
+        "question_id": "q11",
+        "split": "dev",
+        "question": "Theo phân tích tại Chương 2 về bối cảnh giao thông vận tải, lĩnh vực giao thông vận tải xả ra bao nhiêu triệu tấn khí thải năm 2021 và nếu không khử các-bon thì sẽ tăng lên mức nào vào năm 2050 theo kịch bản BAU?",
+        "strategy_C": {
+          "hit_at_1": false,
+          "hit_at_3": false
+        },
+        "strategy_D_hybrid": {
+          "hit_at_1": false,
+          "hit_at_3": true
+        },
+        "reason": "BM25 keyword match promoted gold chunk to top rank"
+      },
+      {
+        "question_id": "q13",
+        "split": "dev",
+        "question": "Ba kịch bản chuyển đổi sang xe điện (BAU, SPS và ADS) khác nhau ở những tham số chính nào và thời điểm kích hoạt đòn bẩy chính sách giữa ADS và SPS chênh nhau ra sao?",
+        "strategy_C": {
+          "hit_at_1": false,
+          "hit_at_3": true
+        },
+        "strategy_D_hybrid": {
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        "reason": "BM25 keyword match promoted gold chunk to top rank"
+      },
+      {
+        "question_id": "q17",
+        "split": "test",
+        "question": "Để đáp ứng mục tiêu chuyển đổi xe điện, Việt Nam cần đầu tư bao nhiêu tỷ USD cho ngành điện trong giai đoạn 2024-2030 và cộng dồn bao nhiêu tỷ USD trong giai đoạn 2031-2050 theo kịch bản ADS?",
+        "strategy_C": {
+          "hit_at_1": false,
+          "hit_at_3": true
+        },
+        "strategy_D_hybrid": {
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        "reason": "BM25 keyword match promoted gold chunk to top rank"
+      }
+    ],
+    "degraded_count": 1,
+    "degraded_details": [
+      {
+        "question_id": "q07",
+        "split": "dev",
+        "question": "Quy mô phát hành trái phiếu doanh nghiệp năm 2024 phục hồi đạt bao nhiêu ngàn tỷ VND và giá trị trái phiếu sắp đáo hạn trong năm 2025 là bao nhiêu?",
+        "strategy_C": {
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        "strategy_D_hybrid": {
+          "hit_at_1": false,
+          "hit_at_3": true
+        },
+        "reason": "Lexical overlap with non-gold chunks diluted dense semantic ranking"
+      }
+    ],
+    "unchanged_count": 14
+  }
+}

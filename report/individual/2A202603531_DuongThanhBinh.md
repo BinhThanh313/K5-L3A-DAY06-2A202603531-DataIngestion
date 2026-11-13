@@ -96,16 +96,16 @@
 | Strategy | Coherence trung bình /2 (n=10) | Metadata đủ và đúng (n=15 bản ghi test) | Filter tuân thủ (câu có filter) | Grounding 0/1/2 (số câu test) và TB /2 |
 |---|---|---|---|---|
 | **A (Fixed)** | 0.90 / 2 (0 mức 2, 9 mức 1, 1 mức 0) | 15/15 (100%) | Dev: 1/4 (25%) \| Test: 2/2 (100%) | 0 câu 0đ, 2 câu 1đ, 3 câu 2đ $\rightarrow$ **1.60 / 2** |
-| **B (Paragraph)** | 1.70 / 2 (7 mức 2, 3 mức 1, 0 mức 0) | 15/15 (100%) | Dev: 1/4 (25%) \| Test: 2/2 (100%) | 0 câu 0đ, 0 câu 1đ, 5 câu 2đ $\rightarrow$ **2.00 / 2** |
-| **C (Para + Filter)** | 1.70 / 2 (7 mức 2, 3 mức 1, 0 mức 0) | 15/15 (100%) | Dev: 4/4 (100%) \| Test: 2/2 (100%) | 0 câu 0đ, 0 câu 1đ, 5 câu 2đ $\rightarrow$ **2.00 / 2** |
+| **B (Paragraph)** | 1.60 / 2 (6 mức 2, 4 mức 1, 0 mức 0) | 15/15 (100%) | Dev: 1/4 (25%) \| Test: 2/2 (100%) | 0 câu 0đ, 0 câu 1đ, 5 câu 2đ $\rightarrow$ **2.00 / 2** |
+| **C (Para + Filter)** | 1.60 / 2 (6 mức 2, 4 mức 1, 0 mức 0) | 15/15 (100%) | Dev: 4/4 (100%) \| Test: 2/2 (100%) | 0 câu 0đ, 0 câu 1đ, 5 câu 2đ $\rightarrow$ **2.00 / 2** |
 
 - **Đường dẫn artifacts và audit đầy đủ:**
-  - Full trace truy xuất Top-3: [results/all_traces.json](file:///d:/VinAI20K/K5-L3A-DAY06-2A202603531-DataIngestion/results/all_traces.json) (và tách riêng `traces_A.json`, `traces_B.json`, `traces_C.json`).
-  - Mẫu chấm Coherence: [results/manual_coherence_audit.json](file:///d:/VinAI20K/K5-L3A-DAY06-2A202603531-DataIngestion/results/manual_coherence_audit.json).
-  - Kiểm tra Metadata: [results/manual_metadata_audit.json](file:///d:/VinAI20K/K5-L3A-DAY06-2A202603531-DataIngestion/results/manual_metadata_audit.json).
-  - Chấm Grounding Quality: [results/manual_grounding_audit.json](file:///d:/VinAI20K/K5-L3A-DAY06-2A202603531-DataIngestion/results/manual_grounding_audit.json).
-  - Thống kê phân bố chunk & thời gian: [results/strategy_stats.json](file:///d:/VinAI20K/K5-L3A-DAY06-2A202603531-DataIngestion/results/strategy_stats.json).
-  - Nhật ký tổng hợp: [artifacts/experiment_log.csv](file:///d:/VinAI20K/K5-L3A-DAY06-2A202603531-DataIngestion/artifacts/experiment_log.csv).
+  - Full trace truy xuất Top-3: [results/all_traces.json](../../results/all_traces.json) (và tách riêng `traces_A.json`, `traces_B.json`, `traces_C.json`).
+  - Mẫu chấm Coherence: [results/manual_coherence_audit.json](../../results/manual_coherence_audit.json).
+  - Kiểm tra Metadata: [results/manual_metadata_audit.json](../../results/manual_metadata_audit.json).
+  - Chấm Grounding Quality: [results/manual_grounding_audit.json](../../results/manual_grounding_audit.json).
+  - Thống kê phân bố chunk & thời gian: [results/strategy_stats.json](../../results/strategy_stats.json).
+  - Nhật ký tổng hợp: [artifacts/experiment_log.csv](../../artifacts/experiment_log.csv).
 
 ---
 
@@ -113,7 +113,7 @@
 
 ### So sánh A–B (Tác động của Chunking)
 - **Hiệu năng truy xuất:** Chiến lược B vượt trội Chiến lược A trên cả Dev Hit@3 (80.0% so với 73.33%) và Test Hit@3 (100.0% so với 60.00%). Tổng thể cả bộ câu hỏi, Hit@3 tăng từ **70.0% lên 85.0%**.
-- **Tính mạch lạc (Chunk Coherence):** Điểm trung bình Coherence của B đạt **1.70/2**, cao hơn đáng kể so với **0.90/2** của A. Lý do là Strategy A cắt cố định theo 500 ký tự nên có đến 9/10 mẫu kiểm tra bị cắt cụt từ ngữ ở cuối dòng (ví dụ `pos_01`: *"trong năm 2024. Mặ"*, `pos_09`: *"suy giảm và tă"*), làm mất liên kết cú pháp và mất chủ ngữ mệnh đề tiếp theo. Ngược lại, Strategy B ngắt theo ranh giới câu và đoạn văn nên 7/10 chunk giữ trọn vẹn ngữ cảnh độc lập.
+- **Tính mạch lạc (Chunk Coherence):** Điểm trung bình Coherence của B đạt **1.60/2**, cao hơn đáng kể so với **0.90/2** của A. Lý do là Strategy A cắt cố định theo 500 ký tự nên có đến 9/10 mẫu kiểm tra bị cắt cụt từ ngữ ở cuối dòng (ví dụ `pos_01`: *"trong năm 2024. Mặ"*, `pos_09`: *"suy giảm và tă"*), làm mất liên kết cú pháp và mất chủ ngữ mệnh đề tiếp theo. Ngược lại, Strategy B ngắt theo ranh giới câu và đoạn văn nên 6/10 chunk giữ trọn vẹn ngữ cảnh độc lập (điểm 2) và 4/10 chunk đạt điểm 1 (không có chunk nào điểm 0).
 - **Tác động đến Grounding:** Trên 5 câu test, Strategy A có 2 câu chỉ đạt 1/2 điểm grounding (`q17`, `q18`) do bằng chứng bị xé lẻ giữa hai chunk liền kề. Strategy B đạt trọn vẹn **2.0/2** điểm grounding trên toàn bộ 5 câu test.
 
 ### So sánh B–C (Tác động của Metadata Filtering)
@@ -139,7 +139,7 @@
 ### Chiến lược được lựa chọn, Đánh đổi và Điều kiện áp dụng
 - **Chiến lược được chọn: CHIẾN LƯỢC C (Paragraph-aware Chunking + Metadata Filtering).**
   - Đạt chỉ số cao nhất: Dev Hit@3 = 86.67%, Test Hit@3 = 100.0%, Overall Hit@3 = 90.00%.
-  - Giữ được trọn vẹn tính mạch lạc của câu văn (Coherence 1.70/2) và chất lượng bằng chứng (Grounding 2.0/2).
+  - Giữ được trọn vẹn tính mạch lạc của câu văn (Coherence 1.60/2) và chất lượng bằng chứng (Grounding 2.0/2).
   - Tốc độ truy vấn nhanh nhất (0.385s cho 20 câu hỏi).
 - **Đánh đổi (Trade-off):**
   - Chia theo đoạn văn làm tăng số lượng chunk (365 chunks so với 279 chunks của A, tăng ~30% số lượng chunk và vector lưu trữ).
@@ -152,5 +152,51 @@
   - Bộ bóc tách PDF chưa tái tạo lại được cấu trúc bảng biểu 2 chiều (matrix tables).
   - Đánh giá thủ công Coherence và Grounding do tác giả thực hiện nên có nguy cơ thiên lệch chủ quan.
 - **Hướng cải tiến nếu mở rộng:**
-  - Bổ sung Hybrid Retrieval (kết hợp Dense Cosine Similarity + BM25 keyword search) để xử lý các câu hỏi chứa mã văn bản đặc thù hoặc tên riêng viết tắt (như Quyết định 876/QĐ-TTg, VNEEP3, DPPA).
+  - Đã thực nghiệm thành công mô hình **Hybrid Retrieval** (chi tiết ở Mục 5 bên dưới), chứng minh sự kết hợp giữa Dense và BM25 mang lại độ phủ bằng chứng tuyệt đối.
   - Thêm cơ chế Parser bảng biểu chuyên dụng (như `pdfplumber` hoặc mô hình OCR layout) để chuyển các bảng thống kê kinh tế thành định dạng Markdown Table có cấu trúc trước khi chunking.
+
+---
+
+## 5. Mở rộng tùy chọn: Thử nghiệm Hybrid Retrieval (Dense Vector + BM25 Okapi)
+
+Thực hiện theo hướng dẫn mở rộng tại [GUIDE.md](../../GUIDE.md): Giữ nguyên toàn bộ 365 chunks và bộ lọc metadata `section` của Chiến lược C, kết hợp truy xuất ngữ nghĩa dense (OpenAI `text-embedding-3-small`) với truy xuất từ khóa thưa BM25 thông qua thuật toán hợp nhất thứ hạng **Reciprocal Rank Fusion (RRF)**:
+$$RRF\_score(d) = \frac{w_{dense}}{k + rank_{dense}(d)} + \frac{w_{bm25}}{k + rank_{bm25}(d)}$$
+
+### 5.1. Tinh chỉnh tham số trên tập DEV (15 câu hỏi)
+Thực nghiệm 4 bộ siêu tham số trên tập Dev để chọn ra cấu hình tối ưu trước khi đánh giá trên tập Test:
+- `RRF-k20-balanced` ($k=20, w_{dense}=1.0, w_{bm25}=1.0$): Dev Hit@1 = 66.67% (10/15), Dev Hit@3 = 100.0% (15/15)
+- `RRF-k60-standard` ($k=60, w_{dense}=1.0, w_{bm25}=1.0$): Dev Hit@1 = 66.67% (10/15), Dev Hit@3 = 100.0% (15/15)
+- `RRF-k100-soft` ($k=100, w_{dense}=1.0, w_{bm25}=1.0$): Dev Hit@1 = 66.67% (10/15), Dev Hit@3 = 100.0% (15/15)
+- `RRF-k60-dense-boosted` ($k=60, w_{dense}=1.4, w_{bm25}=0.8$): Dev Hit@1 = **73.33%** (11/15), Dev Hit@3 = **100.0%** (15/15) $\rightarrow$ **Cấu hình tối ưu được chọn**. Nhờ tăng nhẹ trọng số của vector ngữ nghĩa ($1.4 \times$) so với từ khóa ($0.8 \times$), mô hình xử lý triệt để các trường hợp hòa điểm từ khóa, đưa Dev Hit@1 lên mức cao nhất.
+
+### 5.2. Kết quả thực nghiệm và so sánh với Strategy C (Dense thuần)
+
+| Chỉ số Retrieval | Strategy C (Dense + Filter) | Strategy D (Hybrid Dense + BM25) | Thay đổi ($\Delta$) |
+|:---|:---:|:---:|:---:|
+| **Dev Hit@1** | 66.67% (10/15) | **73.33% (11/15)** | **+6.66%** |
+| **Dev Evidence Hit@3** | 86.67% (13/15) | **100.0% (15/15)** | **+13.33%** |
+| **Test Hit@1** | 60.00% (3/5) | **80.00% (4/5)** | **+20.00%** |
+| **Test Evidence Hit@3** | 100.0% (5/5) | **100.0% (5/5)** | Giữ nguyên 100% |
+| **Toàn bộ 20 câu Hit@3** | 90.00% (18/20) | **100.0% (20/20)** | **+10.00% (Thu hồi đủ 20/20 câu)** |
+
+### 5.3. Phân tích chi tiết các ca cải thiện và ca suy giảm (theo yêu cầu của GUIDE.md)
+
+1. **Các câu hỏi được cải thiện rõ rệt nhờ BM25 (5 câu):**
+   - **`q08` (Dev - Cải cách tiền lương & Trái phiếu CP):** Strategy C trượt Hit@3 vì mô hình dense nhầm lẫn giữa trái phiếu chính phủ và trái phiếu doanh nghiệp. BM25 khớp chính xác từ khóa định lượng `"01/07/2024"`, `"cải cách tiền lương"`, kéo chunk trang 35 lên Top-2 $\rightarrow$ Đạt Hit@3.
+   - **`q11` (Dev - Khí thải giao thông vận tải 2021 & 2050):** Strategy C trượt Hit@3 do dense bắt nhầm các đoạn phân tích lưới điện chung chung. BM25 bắt chính xác các thuật ngữ chuyên biệt `"khử các-bon"`, kịch bản `"BAU"`, và mốc thời gian `"2021"`, `"2050"` $\rightarrow$ Đạt Hit@3.
+   - **`q05` (Dev - Dự trữ ngoại hối & OMO):** Strategy C chỉ đạt Top-2 do câu văn ngữ cảnh bị phân tán. BM25 khớp chính xác từ khóa viết tắt nghiệp vụ `"OMO"` và `"tín phiếu kho bạc"` $\rightarrow$ Đẩy chunk lên thẳng **Top-1 (Hit@1)**.
+   - **`q13` (Dev - Ba kịch bản xe điện BAU, SPS, ADS):** Khớp tuyệt đối chuỗi từ khóa viết tắt `"BAU"`, `"SPS"`, `"ADS"` $\rightarrow$ Tăng từ Top-3 lên **Top-1**.
+   - **`q17` (Test - Vốn đầu tư ngành điện 2024-2030):** Khớp chuỗi số và từ khóa chuyên môn `"ngành điện"`, `"2024-2030"` $\rightarrow$ Tăng từ Top-2 lên **Top-1**.
+
+2. **Trường hợp Hybrid làm giảm chất lượng thứ hạng (Degraded Case - 1 câu):**
+   - **`q07` (Dev - Quy mô phát hành trái phiếu doanh nghiệp phục hồi năm 2024):**
+     - *Ở Strategy C:* Đạt **Top-1 (Hit@1 = True)** nhờ sự tương đồng ngữ nghĩa chính xác về mặt vĩ mô tài chính.
+     - *Ở Strategy D (Hybrid):* Bị tụt từ Top-1 xuống **Top-2 (Hit@1 = False, Hit@3 vẫn True)**.
+     - *Nguyên nhân:* Do cụm từ khóa *"trái phiếu doanh nghiệp"*, *"phát hành"*, *"ngàn tỷ VND"* xuất hiện lặp đi lặp lại ở nhiều đoạn văn phân tích khác nhau trong Chương 1, điểm BM25 cao ở một chunk thảo luận chung về thị trường vốn đã cạnh tranh điểm số với gold chunk, đẩy gold chunk từ hạng 1 xuống hạng 2.
+
+### 5.4. Kết luận về Hybrid Retrieval
+- **Ưu thế vượt trội:** Hybrid giải quyết triệt để điểm yếu của Dense Embedding trong việc tìm kiếm các từ khóa hiếm, từ viết tắt chính sách (`OMO`, `ADS`, `SPS`, `BAU`) và các con số mốc thời gian đặc thù, giúp nâng độ phủ bằng chứng Hit@3 lên mức tuyệt đối **100% (20/20 câu)**.
+- **Lưu ý đánh đổi:** Cần kiểm soát trọng số (thông qua RRF hằng số $k \ge 20$) để tránh hiện tượng "nhiễu từ khóa" làm giảm độ chính xác ở Rank 1 như trường hợp câu `q07`.
+- **Minh chứng tái lập:** 
+  - Code: [starter/src/hybrid.py](../../starter/src/hybrid.py) và [starter/src/run_hybrid.py](../../starter/src/run_hybrid.py).
+  - Traces và Metrics: [results/traces_hybrid.json](../../results/traces_hybrid.json) và [results/hybrid_metrics.json](../../results/hybrid_metrics.json).

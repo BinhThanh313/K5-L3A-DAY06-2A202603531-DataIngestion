@@ -9,8 +9,9 @@ Dự án hiện thực trọn vẹn pipeline nạp dữ liệu (Data Ingestion P
 | Chiến lược | Cơ chế Chunking & Filter | Dev Hit@1 | Dev Hit@3 | Test Hit@1 | Test Hit@3 | All Hit@3 | Coherence (TB/2) | Grounding (TB/2) | Filter đúng | Chi phí |
 |:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Strategy A** (Baseline) | Fixed-size 500 ký tự, overlap 50, không filter | 53.33% (8/15) | 73.33% (11/15) | 60.00% (3/5) | 60.00% (3/5) | 70.00% (14/20) | 0.90 / 2.0 | 1.60 / 2.0 | N/A | $0.00130 |
-| **Strategy B** | Structure-aware Paragraph 500 ký tự, không filter | 66.67% (10/15) | 80.00% (12/15) | 60.00% (3/5) | **100.0%** (5/5) | 85.00% (17/20) | **1.70 / 2.0** | **2.00 / 2.0** | N/A | $0.00135 |
-| **Strategy C** (Tối ưu) | Paragraph 500 ký tự + **SQL Filter trên `section`** | **66.67%** (10/15) | **86.67%** (13/15) | **60.00%** (3/5) | **100.0%** (5/5) | **90.00%** (18/20) | **1.70 / 2.0** | **2.00 / 2.0** | **100%** (15/15) | $0.00135 |
+| **Strategy B** | Structure-aware Paragraph 500 ký tự, không filter | 66.67% (10/15) | 80.00% (12/15) | 60.00% (3/5) | **100.0%** (5/5) | 85.00% (17/20) | **1.60 / 2.0** | **2.00 / 2.0** | N/A | $0.00135 |
+| **Strategy C** (Cốt lõi) | Paragraph 500 ký tự + **SQL Filter trên `section`** | 66.67% (10/15) | 86.67% (13/15) | 60.00% (3/5) | **100.0%** (5/5) | 90.00% (18/20) | **1.60 / 2.0** | **2.00 / 2.0** | **100%** (15/15) | $0.00135 |
+| **Strategy D** (Mở rộng) | **Hybrid: Dense (C) + BM25 Okapi qua RRF** | **73.33%** (11/15) | **100.0%** (15/15) | **80.00%** (4/5) | **100.0%** (5/5) | **100.0%** (20/20) | **1.60 / 2.0** | **2.00 / 2.0** | **100%** (15/15) | $0.00135 |
 
 - **Embedding Model:** OpenAI `text-embedding-3-small` (1536 chiều, cosine distance `<=>`).
 - **Vector Store:** PostgreSQL 16.16 kết hợp extension `pgvector 0.8.7` chạy Docker local.
@@ -47,13 +48,17 @@ OPENAI_API_KEY=sk-...your-openai-api-key...
 ```
 
 ### Bước 4: Chạy toàn bộ pipeline & benchmark
-Đứng từ thư mục gốc của repository, chạy lệnh:
+Đứng từ thư mục gốc của repository, chạy lệnh để thực thi 3 chiến lược cốt lõi (A, B, C):
 ```bash
 python -m starter.src.run
 ```
+*(Tùy chọn) Chạy kiểm chứng mở rộng mô hình **Hybrid Retrieval** (Dense Vector + BM25 Okapi + RRF):*
+```bash
+python -m starter.src.run_hybrid
+```
 Lệnh trên sẽ tự động:
 1. Đọc và chuẩn hóa 49 trang nội dung hợp lệ từ `data/TAKING STOCK March 2025_VNM_FINAL.pdf`.
-2. Tạo chunks và vector embedding cho 3 chiến lược A, B, C và lưu vào PostgreSQL.
+2. Tạo chunks và vector embedding cho các chiến lược và lưu vào PostgreSQL.
 3. Chạy đánh giá 20 câu benchmark (15 dev / 5 test).
 4. Xuất toàn bộ thống kê, log và traces vào thư mục `results/`.
 
@@ -82,7 +87,7 @@ Lệnh trên sẽ tự động:
 │   ├── manual_grounding_audit.json         # Đánh giá chất lượng grounding 5 câu test
 │   └── all_traces.json                     # Traces truy xuất top-3 cho toàn bộ câu hỏi
 ├── report/individual/
-│   ├── 2A202603531_HoTen.md                # Báo cáo phân tích chuyên sâu của học viên
+│   ├── 2A202603531_DuongThanhBinh.md       # Báo cáo phân tích chuyên sâu của học viên
 │   └── MSSV_HoTen.md                       # File mẫu trắng ban đầu của ban tổ chức
 └── starter/                                # Khung mã nguồn pipeline
     ├── docker-compose.yml                  # Cấu hình container pgvector local
