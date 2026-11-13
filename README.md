@@ -87,8 +87,12 @@ Lệnh trên sẽ tự động:
 │   ├── manual_grounding_audit.json         # Đánh giá chất lượng grounding 5 câu test
 │   └── all_traces.json                     # Traces truy xuất top-3 cho toàn bộ câu hỏi
 ├── report/individual/
+<<<<<<< HEAD
 │   ├── 2A202603531_DuongThanhBinh.md       # Báo cáo phân tích chuyên sâu của học viên
 │   └── MSSV_HoTen.md                       # File mẫu trắng ban đầu của ban tổ chức
+=======
+│   └── 2A202603531_HoTen.md                # Báo cáo phân tích chuyên sâu của học viên
+>>>>>>> cbcb085c7f4f58eeefcca6bb8efbb9a916855478
 └── starter/                                # Khung mã nguồn pipeline
     ├── docker-compose.yml                  # Cấu hình container pgvector local
     ├── requirements.txt                    # Danh sách thư viện phụ thuộc
